@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@font-face {
+    font-family: 'Pelak';
+    src: url('fonts/PelakFA-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root {
+    --bg: #0B1120;
+    --card: #111827;
+    --primary: #2563EB;
+    --accent: #38BDF8;
+    --text: #F8FAFC;
+    --muted: #94A3B8;
+    --border: rgba(148, 163, 184, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    animation: appear 0.6s ease;
+}
+
+.logo {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 28px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #0B1120;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+input::placeholder {
+    color: #64748B;
+}
+
+input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), #1D4ED8);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+}
+
+.footer-text {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid var(--border);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 28px 22px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}
+\n
+/* Authify password feedback */
+.password-errors {
+    margin: 8px 0;
+}
+
+.password-error {
+    color: #ff5c5c;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+.password-strength {
+    margin-top: 12px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#strength-fill {
+    width: 0;
+    height: 100%;
+    background: #777;
+    transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+#strength-text {
+    font-size: 13px;
+    margin: 8px 0;
+    color: #aaa;
+}
+
+.password-rules {
+    list-style: none;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #aaa;
+}
+
+
+/* Minimal Authify password strength */
+.password-strength {
+    display: none;
+    margin-top: 12px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 4px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#strength-fill {
+    width: 0;
+    height: 100%;
+    background: #777;
+    transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+#strength-text {
+    margin: 7px 0 0;
+    font-size: 12px;
+    color: #aaa;
+    letter-spacing: 0.2px;
+}
+
+
+.show-password-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.show-password-option input {
+    accent-color: #999;
+    cursor: pointer;
+}
+
+
+.show-password-option {
+    font-size: 10px;
+    color: #666;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.show-password-option input {
+    transform: scale(0.85);
+}
+
+
+.show-password-option {
+    display: inline-flex;
+    white-space: nowrap;
+    width: auto;
+    gap: 5px;
+}
+
+.show-password-option span {
+    white-space: nowrap;
+}
+
+
+.show-password-option {
+    gap: 3px;
+    margin-top: 4px;
+}
+
+.show-password-option input {
+    margin: 0;
+}
+
+
+.show-password-option {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 3px !important;
+    width: fit-content !important;
+    margin-top: 4px !important;
+    padding: 0 !important;
+}
+
+.show-password-option input[type="checkbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.show-password-option span {
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+}
+
+
+/* Show password checkbox fix */
+.form-group .show-password-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    width: fit-content;
+    margin: 6px 0 0;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 400;
+    color: #999;
+    cursor: pointer;
+}
+
+.form-group .show-password-option input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 14px;
+    accent-color: #999;
+}
+
+.form-group .show-password-option span {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+/* Language switcher */
+.language-switcher {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.language-switcher button {
+    width: auto;
+    padding: 8px 12px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.language-switcher button:hover {
+    border-color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* Persian font */
+html[lang='fa'] body {
+    font-family: 'Pelak', sans-serif;
+}

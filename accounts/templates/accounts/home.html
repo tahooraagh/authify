@@ -1,0 +1,47 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Dashboard" %} | Authify</title>
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+</head>
+<body>
+    <main class="auth-container">
+        <form action="{% url 'set_language' %}" method="post" class="language-switcher">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            {% if LANGUAGE_CODE == 'fa' %}
+                <input type="hidden" name="language" value="en">
+                <button type="submit">English</button>
+            {% else %}
+                <input type="hidden" name="language" value="fa">
+                <button type="submit">فارسی</button>
+            {% endif %}
+        </form>
+        <div class="logo">A</div>
+        <p class="subtitle">{% trans "USER DASHBOARD" %}</p>
+        <h1>{% trans "Welcome" %}, {{ request.user.username }}!</h1>
+        <p class="subtitle">{% trans "You are signed in and ready to go." %}</p>
+
+        <div class="message">
+            <strong>{% trans "Account status" %}:</strong> {% trans "Active" %}
+        </div>
+
+        <div class="message">
+            <strong>{% trans "Username" %}:</strong> {{ request.user.username }}
+        </div>
+
+        <div class="message">
+            <strong>{% trans "Email" %}:</strong> {{ request.user.email|default:_("Not provided") }}
+        </div>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">{% trans "Sign Out" %} →</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,119 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Welcome back"
+msgstr "خوش آمدید"
+
+msgid "Sign in to continue to your Authify account."
+msgstr "جهت ورود به سامانه، اطلاعات کاربری خود را وارد کنید."
+
+msgid "Username"
+msgstr "نام کاربری"
+
+msgid "Enter your username"
+msgstr "نام کاربری خود را وارد کنید"
+
+msgid "Password"
+msgstr "رمز عبور"
+
+msgid "Enter your password"
+msgstr "رمز عبور خود را وارد کنید"
+
+msgid "Show password"
+msgstr "نمایش رمز عبور"
+
+msgid "Sign In"
+msgstr "ورود"
+
+msgid "Don't have an account?"
+msgstr "حساب کاربری ندارید؟"
+
+msgid "Create account"
+msgstr "ایجاد حساب کاربری"
+
+msgid "Login"
+msgstr "ورود"
+
+msgid "Dashboard"
+msgstr "پنل کاربری"
+
+msgid "USER DASHBOARD"
+msgstr "پنل کاربری"
+
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+msgid "You have successfully signed in to your account."
+msgstr "ورود شما به سامانه با موفقیت انجام شد."
+
+msgid "Account status"
+msgstr "وضعیت حساب کاربری"
+
+msgid "Account Status"
+msgstr "وضعیت حساب کاربری"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Not provided"
+msgstr "ثبت نشده"
+
+msgid "Sign Out"
+msgstr "خروج از حساب کاربری"
+
+
+msgid "Create Account"
+msgstr "ایجاد حساب کاربری"
+
+msgid "Create your account to get started."
+msgstr "حساب کاربری خود را ایجاد کنید تا شروع کنید."
+
+msgid "Choose a username"
+msgstr "یک نام کاربری انتخاب کنید"
+
+msgid "Email address"
+msgstr "آدرس ایمیل"
+
+msgid "Enter your email"
+msgstr "آدرس ایمیل خود را وارد کنید"
+
+msgid "Create a password"
+msgstr "یک رمز عبور انتخاب کنید"
+
+msgid "Confirm password"
+msgstr "تأیید رمز عبور"
+
+msgid "Repeat your password"
+msgstr "رمز عبور خود را دوباره وارد کنید"
+
+msgid "Already have an account?"
+msgstr "از قبل حساب کاربری دارید؟"
+
+msgid "Sign in"
+msgstr "وارد شوید"
+
+msgid "Weak password"
+msgstr "رمز عبور ضعیف"
+
+msgid "Medium password"
+msgstr "رمز عبور متوسط"
+
+msgid "Strong password"
+msgstr "رمز عبور قوی"
+
+msgid "Hide password"
+msgstr "پنهان کردن رمز عبور"
+
+
+msgid "Please enter your credentials to access the system."
+msgstr "جهت ورود به سامانه، اطلاعات کاربری خود را وارد کنید."
+
+msgid "You are signed in and ready to go."
+msgstr "شما با موفقیت وارد حساب کاربری خود شده‌اید و آماده ادامه هستید."
