@@ -72,3 +72,27 @@ class AuthenticationTests(TestCase):
             response,
             f"{reverse('login')}?next={reverse('home')}"
         )
+
+    def test_registration_with_empty_fields(self):
+        response = self.client.post(reverse('register'), {
+            'username': '',
+            'email': '',
+            'password': '',
+            'password2': '',
+        })
+
+        self.assertRedirects(response, reverse('register'))
+        self.assertFalse(User.objects.filter(username='').exists())
+
+    def test_registration_with_weak_password(self):
+        response = self.client.post(reverse('register'), {
+            'username': 'weakpassuser',
+            'email': 'weakpass@example.com',
+            'password': '123',
+            'password2': '123',
+        })
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(
+            User.objects.filter(username='weakpassuser').exists()
+        )
