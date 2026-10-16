@@ -34,7 +34,8 @@ class AuthenticationTests(TestCase):
             'password2': 'AnotherStrongPass123!',
         })
 
-        self.assertRedirects(response, reverse('register'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('email', response.context['form'].errors)
         self.assertFalse(User.objects.filter(username='anotheruser').exists())
 
     def test_successful_login(self):
@@ -62,7 +63,8 @@ class AuthenticationTests(TestCase):
             'password2': 'DifferentPass456!',
         })
 
-        self.assertRedirects(response, reverse('register'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('password2', response.context['form'].errors)
         self.assertFalse(User.objects.filter(username='mismatchuser').exists())
 
     def test_home_requires_login(self):
@@ -81,7 +83,8 @@ class AuthenticationTests(TestCase):
             'password2': '',
         })
 
-        self.assertRedirects(response, reverse('register'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.context['form'].errors)
         self.assertFalse(User.objects.filter(username='').exists())
 
     def test_registration_with_weak_password(self):

@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.password_validation import validate_password
-from django.core.exceptions import ValidationError
-from django.core.validators import validate_email
+from .forms import RegistrationForm
 
 
 def register(request):
@@ -13,53 +11,28 @@ def register(request):
         return redirect('home')
 
     if request.method == 'POST':
-        username = request.POST.get('username', '').strip()
-        email = request.POST.get('email', '').strip().lower()
-        password = request.POST.get('password', '')
-        password2 = request.POST.get('password2', '')
+        form = RegistrationForm(request.POST)
 
-        if not username or not email or not password or not password2:
-            messages.error(request, 'Please fill in all fields.')
-            return redirect('register')
+        if form.is_valid():
+            User.objects.create_user(
+                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password'],
+            )
 
-        if password != password2:
-            messages.error(request, 'Passwords do not match.')
-            return redirect('register')
+            messages.success(request, 'Account created successfully!')
+            return redirect('login')
 
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Username already exists.')
-            return redirect('register')
+        return render(request, 'accounts/register.html', {
+            'form': form,
+            'username': form.data.get('username', '').strip(),
+            'email': form.data.get('email', '').strip().lower(),
+            'password_errors': form.errors.get('password', []),
+        })
 
-        if User.objects.filter(email__iexact=email).exists():
-            messages.error(request, 'Email already exists.')
-            return redirect('register')
-
-
-        try:
-            validate_email(email)
-        except ValidationError:
-            messages.error(request, 'Please enter a valid email address.')
-            return redirect('register')
-
-        try:
-            validate_password(password)
-        except ValidationError as error:
-            return render(request, 'accounts/register.html', {
-                'username': username,
-                'email': email,
-                'password_errors': error.messages,
-            })
-
-        User.objects.create_user(
-            username=username,
-            email=email,
-            password=password
-        )
-
-        messages.success(request, 'Account created successfully!')
-        return redirect('login')
-
-    return render(request, 'accounts/register.html')
+    return render(request, 'accounts/register.html', {
+        'form': RegistrationForm(),
+    })
 
 
 def login_view(request):
